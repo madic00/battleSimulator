@@ -45,8 +45,6 @@
 
         $game->update();
 
-        session_unset();
-
     } else {
         $winner = false;
     }
