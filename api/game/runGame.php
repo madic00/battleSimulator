@@ -38,6 +38,15 @@
 
     if($armiesAlive == 1) {
         $winner = "Game ended! Winner is " . $army->name . " army";
+
+        $game = Game::getSingle($gameId);
+
+        $game->idGameStatus = 3;
+
+        $game->update();
+
+        session_unset();
+
     } else {
         $winner = false;
     }
@@ -80,7 +89,6 @@
                 
     }
 
-    // var_dump($_SESSION);
 
     echo json_encode($data);
 

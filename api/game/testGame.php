@@ -4,13 +4,17 @@
 
     $gameId = 1;
 
-    if(isset($_SESSION['whoAttack'])) {
-        $army = Army::getSingle($_SESSION['whoAttack']);
-    } else {
-        $army = Army::getFirstAttackerArmy($gameId);
+    // if(isset($_SESSION['whoAttack'])) {
+    //     $army = Army::getSingle($_SESSION['whoAttack']);
+    // } else {
+    //     $army = Army::getFirstAttackerArmy($gameId);
 
-        $_SESSION['firstAttackerId'] = $army->id;
-    }
+    //     $_SESSION['firstAttackerId'] = $army->id;
+    // }
+
+    $army = Army::getFirstAttackerArmy($gameId);
+
+    var_dump($army);
 
     // var_dump($army);
 
@@ -55,6 +59,8 @@
     }
 
     // session_destroy();
+
+    session_unset();
 
     var_dump($_SESSION);
 

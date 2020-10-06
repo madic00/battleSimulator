@@ -17,6 +17,8 @@
 
     $strategies = AttackStrategy::getAll();
 
+    $_SESSION['gameId'] = $gameId;
+
 ?>
 
     <div class="container">
@@ -24,10 +26,10 @@
             <div class="col-md-12 text-center py-5">
                 <h1><a href="index.php" title="Home">Battle simulator</a></h1>
 
-                <h2>Game Id: <?= $game->gameCodeID ?></h2>
+                <h2 id="gameCode">Game Id: <?= $game->gameCodeID ?></h2>
 
                 <p id="winner"></p>
-
+                
                 <div id="armies" class="my-5">
 
                     <table class="table table-striped">
@@ -57,7 +59,7 @@
 
                     <button type="button" data-gameid="<?= $gameId ?>" class="btn btn-dark runGame mr-5">Run</button>
 
-                    <button type="button" data-gameid="<?= $gameId ?>" class="btn btn-dark autorun mr-5">AutoRun</button>
+                    <button type="button" data-gameid="<?= $gameId ?>" class="btn btn-dark autorun mr-5">Autorun</button>
 
                 </div>
 

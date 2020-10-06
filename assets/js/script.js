@@ -15,6 +15,8 @@ window.onload = () => {
 
         $(".runGame").click(runGame);
 
+        $(".autorun").click(autorun);
+
     }
 }
 
@@ -105,7 +107,26 @@ function runGame() {
 
             console.log(response.winner);
 
-            $("#winner").html(response.winner);
+            let out = `<p id="winner">${response.winner}</p>`;
+
+            $(out).insertAfter("#gameCode");
+        }
+
+        loadArmies(gameId);
+    })
+}
+
+function autorun() {
+    var gameId = $(this).data("gameid");
+
+    ajaxGet("api/game/autorun.php", response => {
+        if (response.ended) {
+            alert(response.winner);
+
+            console.log(response.winner);
+
+            $("#winner").html("Game ended! Army " + response.winner + " won");
+
         }
 
         loadArmies(gameId);
